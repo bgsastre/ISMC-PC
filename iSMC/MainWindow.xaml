@@ -1,0 +1,61 @@
+﻿<Window x:Class="iSMC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iSMC"
+        mc:Ignorable="d"
+        AllowsTransparency="True" 
+        ShowInTaskbar="true" 
+        Topmost="false" 
+        WindowStyle="None" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        Icon="Images/Logo_i_v2.ico"
+        MouseLeftButtonDown="Window_MouseDown"
+        Title="MainWindow" Height="700" Width="1000">
+    <Border Background="White" BorderBrush="#FF1362A4" BorderThickness="3,3,3,3" CornerRadius="70,15,30,15" Margin="0,0,0,0">
+        <Grid>
+            <Rectangle x:Name="riSMCA_Copy"       HorizontalAlignment="Left" Height="250" Margin="10,362,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="300" RadiusX="20" RadiusY="20"/>
+
+
+            <Rectangle x:Name="riSMCA"       HorizontalAlignment="Left" Height="250" Margin="10,100,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="300" RadiusX="20" RadiusY="20"/>
+
+            <Label x:Name="lbDriver"   Content="DRIVER STATUS" HorizontalAlignment="Left" Height="30"  Margin="25,110,0,0" VerticalAlignment="Top" Width="200" FontWeight="Bold" FontSize="18" Foreground="#FF1362A4" FontFamily="Verdana"/>
+            <Label                     Content="Hardware:"     HorizontalAlignment="Left" Height="30"  Margin="25, 150,0,0" VerticalAlignment="Top" Width="100" FontWeight="Bold" FontSize="14" Foreground="#FF1362A4" FontFamily="Verdana"/>
+            <Label                     Content="Baudrate:"     HorizontalAlignment="Left" Height="30"  Margin="25, 190,0,0" VerticalAlignment="Top" Width="100" FontWeight="Bold" FontSize="14" Foreground="#FF1362A4" FontFamily="Verdana"/>
+            <Label                     Content="HW. Type:"     HorizontalAlignment="Left" Height="30"  Margin="25, 230,0,0" VerticalAlignment="Top" Width="100" FontWeight="Bold" FontSize="14" Foreground="#FF1362A4" FontFamily="Verdana"/>
+            <Label x:Name="lbHardware" Content="None"          HorizontalAlignment="Left" Height="30"  Margin="150,150,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontSize="14" Foreground="#FF1362A4" FontFamily="Verdana"/>
+            <Label x:Name="lbBaudrate" Content="250Kbs"        HorizontalAlignment="Left" Height="30"  Margin="150,190,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontSize="14" Foreground="#FF1362A4" FontFamily="Verdana"/>
+            <Label x:Name="lbHWType"   Content="ISA-82C200"    HorizontalAlignment="Left" Height="30"  Margin="150,230,0,0" VerticalAlignment="Top" Width="150" FontWeight="Bold" FontSize="14" Foreground="#FF1362A4" FontFamily="Verdana"/>
+
+
+            <Image x:Name="imgConnect"     HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="120" Margin="90,275,0,0" Cursor="Hand" Source="Images/ConnectOff.png"   ToolTip="ISMC Configuration"     MouseDown="Connect_OnMouseDown" />
+
+
+            
+            <Rectangle x:Name="rSeparation2" HorizontalAlignment="Left" Height="5"   Margin="15,85, 0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="950" RadiusX="3" RadiusY="3" Fill="#FF1362A4"/>
+            <Label x:Name="lMainMenu" Content="iSMC Graphical User Interface"                 HorizontalAlignment="Left" Height="56"  Margin="51,17,0,0"   VerticalAlignment="Top" Width="700" FontWeight="Bold" FontSize="36" Foreground="#FF1362A4" FontFamily="Verdana" />
+            <Rectangle x:Name="rSeparation1" HorizontalAlignment="Left" Height="5"   Margin="15,622,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="950" RadiusX="3" RadiusY="3" Fill="#FF1362A4"/>
+            <Image x:Name="iLogo" Source="Images/Logotipo masermic.jpg" HorizontalAlignment="Left" Height="41" Margin="780,640,0,0" VerticalAlignment="Top" Width="188"/>
+            <Image x:Name="iConfig"     HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="90" Margin="400,150,0,0" Cursor="Hand" Source="Images/IconoConfig2d.png"   IsEnabled="false" ToolTip="ISMC Configuration"     MouseDown="iConfig_OnMouseDown" />
+            <Image x:Name="iCtrl"       HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="90" Margin="400,300,0,0" Cursor="Hand" Source="Images/PMSMd.png"           IsEnabled="false" ToolTip="Motor Control"          MouseDown="iControl_OnMouseDown" />
+            <Image x:Name="iFlashMem"   HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="90" Margin="400,450,0,0" Cursor="Hand" Source="Images/WriteFlashd.PNG"     IsEnabled="false" ToolTip="Bootloader"              />
+            <Label x:Name="lConfig"   Content="ISMC Configuration" HorizontalAlignment="Left" Height="42"  Margin="550,175,0,0" VerticalAlignment="Top" Width="350" FontWeight="Bold" FontSize="24" Foreground="DarkGray" FontFamily="Verdana" IsEnabled="False" Cursor="Hand" MouseDown="iConfig_OnMouseDown" MouseEnter="iConfig_MouseEnter" MouseLeave="iConfig_MouseLeave"/>
+            <Label x:Name="lControl"  Content="Motor Control"      HorizontalAlignment="Left" Height="42"  Margin="550,325,0,0" VerticalAlignment="Top" Width="350" FontWeight="Bold" FontSize="24" Foreground="DarkGray" FontFamily="Verdana" IsEnabled="False"  Cursor="Hand" MouseDown="iControl_OnMouseDown" MouseEnter="lControl_OnMouseEnter" MouseLeave="lControl_OnMouseLeave" />
+            <Label x:Name="lMemory"   Content="Bootloader"         HorizontalAlignment="Left" Height="42"  Margin="550,475,0,0" VerticalAlignment="Top" Width="350" FontWeight="Bold" FontSize="24" Foreground="DarkGray" FontFamily="Verdana" IsEnabled="False"  Cursor="Hand" />
+            
+            <Image x:Name="iISMCAQStatus"                   HorizontalAlignment="Left" VerticalAlignment="Top" Height="115" Width="128" Margin="14,372,0,0" Cursor="Hand" Source="Images/ECUInfod.png" />
+            <Image x:Name="iISMCBQStatus"                   HorizontalAlignment="Left" VerticalAlignment="Top" Height="115" Width="128" Margin="14,488,0,0" Cursor="Hand" Source="Images/ECUInfod.png" />
+            <Label x:Name="lFWaa" Content="FWa:"            HorizontalAlignment="Left" Height="29"  Margin="144,422,0,0" VerticalAlignment="Top" Width="50" FontWeight="Bold" FontSize="14" Foreground="DarkGray" FontFamily="Verdana"/>
+            <Label x:Name="lFWa"  Content="00.00.00"        HorizontalAlignment="Left" Height="29"  Margin="204,422,0,0" VerticalAlignment="Top" Width="110" FontWeight="Bold" FontSize="14" Foreground="DarkGray" FontFamily="Verdana"/>
+            <Label x:Name="lFWbb" Content="FWb:"            HorizontalAlignment="Left" Height="29"  Margin="144,538,0,0" VerticalAlignment="Top" Width="50" FontWeight="Bold" FontSize="14" Foreground="DarkGray" FontFamily="Verdana"/>
+            <Label x:Name="lFWb"  Content="00.00.00"        HorizontalAlignment="Left" Height="29"  Margin="204,538,0,0" VerticalAlignment="Top" Width="110" FontWeight="Bold" FontSize="14" Foreground="DarkGray" FontFamily="Verdana"/>
+            <Image x:Name="iExit"       HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="900,15, 0,0" Cursor="Hand" Source="Images/IconoExit.PNG"      ToolTip="Exit"                   MouseDown="iReturn_OnMouseDown"/>
+            <Image x:Name="iHelp"       HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="800,15,0,0"  Cursor="Hand" Source="Images/IconoPregunta.PNG"  ToolTip="Bootloader"  />
+            <Label x:Name="lVersion"    Content="iSMC GUI V1.3"                 HorizontalAlignment="Left" Height="30"  Margin="25,0,0,13"   VerticalAlignment="Bottom" Width="500" FontWeight="Bold" FontSize="12" Foreground="#FF1362A4" FontFamily="Verdana" />
+
+        </Grid>
+    </Border>
+</Window>

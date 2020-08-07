@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{83F3A82B-EB60-46ED-8981-C6CA6B4EC431}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>iSMC</RootNamespace>
+    <AssemblyName>iSMC</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo_i_v2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ErrorMessage.xaml.cs">
+      <DependentUpon>ErrorMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaveConfig.xaml.cs">
+      <DependentUpon>SaveConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateWindow.xaml.cs">
+      <DependentUpon>UpdateWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Configuration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ErrorMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CCalibration.cs" />
+    <Compile Include="CCommunications.cs" />
+    <Compile Include="CGlobals.cs" />
+    <Compile Include="Configuration.xaml.cs">
+      <DependentUpon>Configuration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control.cs" />
+    <Compile Include="Control.xaml.cs">
+      <DependentUpon>Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnosis.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="SaveConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PCANBasic.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\A.PNG" />
+    <Resource Include="Images\BatteryOFF.PNG" />
+    <Resource Include="Images\BatteryOFFd.PNG" />
+    <Resource Include="Images\BatteryON.PNG" />
+    <Resource Include="Images\Bluetooth.png" />
+    <Resource Include="Images\BluetoothConfig.png" />
+    <Resource Include="Images\BluetoothError.png" />
+    <Resource Include="Images\BluetoothIcono.png" />
+    <Resource Include="Images\BluetoothOK.png" />
+    <Resource Include="Images\BluetoothWaiting.png" />
+    <Resource Include="Images\CANAnalyzerError.png" />
+    <Resource Include="Images\CANAnalyzerPlay.PNG" />
+    <Resource Include="Images\CANAnalyzerStop.PNG" />
+    <Resource Include="Images\CANComm.png" />
+    <Resource Include="Images\CANError.png" />
+    <Resource Include="Images\CANIcon.PNG" />
+    <Resource Include="Images\CANIcono.png" />
+    <Resource Include="Images\DriverError.PNG" />
+    <Resource Include="Images\DriverOK.PNG" />
+    <Resource Include="Images\DriverOKd.PNG" />
+    <Resource Include="Images\ECUAdd.png" />
+    <Resource Include="Images\ECUBTooth.png" />
+    <Resource Include="Images\ECUError.PNG" />
+    <Resource Include="Images\ECUIdle.PNG" />
+    <Resource Include="Images\ECUInfo.png" />
+    <Resource Include="Images\ECUInhibit.png" />
+    <Resource Include="Images\ECUOK.png" />
+    <Resource Include="Images\ECUPlay.PNG" />
+    <Resource Include="Images\ECURemove.png" />
+    <Resource Include="Images\ECUStop.PNG" />
+    <Resource Include="Images\ECUStopd.PNG" />
+    <Resource Include="Images\FileAdd.png" />
+    <Resource Include="Images\FileDelete.png" />
+    <Resource Include="Images\FileGet.png" />
+    <Resource Include="Images\Flash.png" />
+    <Resource Include="Images\FlashDelete.png" />
+    <Resource Include="Images\flashIcon.png" />
+    <Resource Include="Images\FlashRead.png" />
+    <Resource Include="Images\FlashWrite.png" />
+    <Resource Include="Images\HeartBeatOff.png" />
+    <Resource Include="Images\HeartBeatOffd.PNG" />
+    <Resource Include="Images\HeartBeatOn.PNG" />
+    <Resource Include="Images\IconAdd.PNG" />
+    <Resource Include="Images\IconoCANSetup.PNG" />
+    <Resource Include="Images\IconoConfig.PNG" />
+    <Resource Include="Images\IconoConfig2.png" />
+    <Resource Include="Images\IconoControl.PNG" />
+    <Resource Include="Images\IconoECU.jpg" />
+    <Resource Include="Images\IconoECU.PNG" />
+    <Resource Include="Images\IconoExit.png" />
+    <Resource Include="Images\IconoIdent.PNG" />
+    <Resource Include="Images\IconoOpen.PNG" />
+    <Resource Include="Images\IconoPlay.PNG" />
+    <Resource Include="Images\IconoPlayd.PNG" />
+    <Resource Include="Images\IconoPlayDisabled.bmp" />
+    <Resource Include="Images\IconoPlayDisabled.PNG" />
+    <Resource Include="Images\IconoPregunta.PNG" />
+    <Resource Include="Images\IconoQECU.PNG" />
+    <Resource Include="Images\IconoRecord.png" />
+    <Resource Include="Images\IconoRefresh.png" />
+    <Resource Include="Images\IconoReturn.PNG" />
+    <Resource Include="Images\IconoSave.PNG" />
+    <Resource Include="Images\IconoSet.PNG" />
+    <Resource Include="Images\IconoStop.PNG" />
+    <Resource Include="Images\IconoWarning.PNG" />
+    <Resource Include="Images\IconRemove.PNG" />
+    <Resource Include="Images\InverterError.PNG" />
+    <Resource Include="Images\InverterOk.PNG" />
+    <Resource Include="Images\InverterOkd.PNG" />
+    <Resource Include="Images\InverterTemp.PNG" />
+    <Resource Include="Images\InverterWarning.PNG" />
+    <Resource Include="Images\iSMCA.png" />
+    <Resource Include="Images\iSMCB.png" />
+    <Resource Include="Images\iSMCECU.PNG" />
+    <Resource Include="Images\iSMCNotSel.PNG" />
+    <Resource Include="Images\iSMCSel.png" />
+    <Resource Include="Images\iTMCECU.PNG" />
+    <Resource Include="Images\ITMCHeartBeatOff.PNG" />
+    <Resource Include="Images\ITMCHeartBeatOn.PNG" />
+    <Resource Include="Images\iTMCNotSel.PNG" />
+    <Resource Include="Images\LedGris.PNG" />
+    <Resource Include="Images\LedOFF.jpg" />
+    <Resource Include="Images\LedON.jpg" />
+    <Resource Include="Images\LedRojo.PNG" />
+    <Resource Include="Images\LedVerde.PNG" />
+    <Resource Include="Images\LedVerde2.png" />
+    <Resource Include="Images\Lock.png" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\logo_i_v2.ico" />
+    <Resource Include="Images\MasermicSplash.png" />
+    <Resource Include="Images\Modice.png" />
+    <Resource Include="Images\Mosfet.jpg" />
+    <Resource Include="Images\MotorAEnabled.png" />
+    <Resource Include="Images\MotorBEnabled.png" />
+    <Resource Include="Images\MotorCCW.PNG" />
+    <Resource Include="Images\MotorCCWd.PNG" />
+    <Resource Include="Images\MotorCW.PNG" />
+    <Resource Include="Images\MotorError.PNG" />
+    <Resource Include="Images\MotorNotDefined.png" />
+    <Resource Include="Images\MotorNotSelected.png" />
+    <Resource Include="Images\MotorOK.PNG" />
+    <Resource Include="Images\MotorSelected.PNG" />
+    <Resource Include="Images\MotorWarning.PNG" />
+    <Resource Include="Images\OpenIcono.png" />
+    <Resource Include="Images\PMSM.png" />
+    <Resource Include="Images\Refresh.png" />
+    <Resource Include="Images\RegenBraking.png" />
+    <Resource Include="Images\RegenBrakingDisabled.png" />
+    <Resource Include="Images\RegenBrakingOff.png" />
+    <Resource Include="Images\RegenBrakingOn.png" />
+    <Resource Include="Images\Reset.png" />
+    <Resource Include="Images\Reset2.png" />
+    <Resource Include="Images\Save.jpg" />
+    <Resource Include="Images\SaveIcono.png" />
+    <Resource Include="Images\Select.png" />
+    <Resource Include="Images\Star.png" />
+    <Resource Include="Images\StartStop.png" />
+    <Resource Include="Images\StopIcono.png" />
+    <Resource Include="Images\TempError.png" />
+    <Resource Include="Images\TempOK.png" />
+    <Resource Include="Images\TempOKd.png" />
+    <Resource Include="Images\TempWarning.PNG" />
+    <Resource Include="Images\UnLock.png" />
+    <Resource Include="Images\VolverIcono.png" />
+    <Resource Include="Images\WaitIcon.png" />
+    <Resource Include="Images\WriteData.png" />
+    <Resource Include="Images\WriteFlash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logotipo masermic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ConnectOff.png" />
+    <Resource Include="Images\ConnectOff2.png" />
+    <Resource Include="Images\ConnectOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\IconoConfig2d.png" />
+    <Resource Include="Images\PMSMd.png" />
+    <Resource Include="Images\WriteFlashd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ECUInfod.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\RecordingProgress.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ReadingProgress.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo_i_v2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BrakeOff.png" />
+    <Resource Include="Images\BrakeOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Saved.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Delete.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<motor>
+    <Identifier>ME080AS114P5</Identifier>
+    <PolePairs>4</PolePairs>
+    <Rs>0,188085973</Rs>
+    <Ls>0,000188112</Ls>
+    <Flux>0,080460787</Flux>
+    <Inertia>0,06732332706</Inertia>
+    <Friction>1,624863565</Friction>
+    <SensorType>2</SensorType>
+    <NLines>360</NLines>
+    <Offset>0</Offset>
+    <SpeedPIKp>1,309523702</SpeedPIKp>
+    <SpeedPIKi>0,008730114</SpeedPIKi>
+    <CurrentPIKp>0,905113665</CurrentPIKp>
+    <CurrentPIKi>0,001594841</CurrentPIKi> 
+    <Bandwidth>250,0</Bandwidth>
+    <CtrlMode>2</CtrlMode>  
+    <Imax>35,0</Imax>
+    <Iavg>28,0</Iavg>
+    <TIavg>5,0</TIavg>
+    <Smax>5,0</Smax>
+    <TempMax>120,0</TempMax>
+    <TSavg>6000,0</TSavg>
+    <THB>100,0</THB>
+    <TComms>1000,0</TComms>
+    <Amax>16,0</Amax> 
+    <Baudrate>2,0</Baudrate>     
+    <FullScaleFreq>330,0</FullScaleFreq>
+    <ResEstIMax>15,0</ResEstIMax>
+    <IndEstIMax>2,0</IndEstIMax>
+    <FluxEstFreq>33,0</FluxEstFreq>
+    <RoverLFreq>100,0</RoverLFreq> 		
+</motor>

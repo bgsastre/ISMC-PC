@@ -1,0 +1,316 @@
+﻿<Window x:Class="iSMC.Configuration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iSMC"
+        mc:Ignorable="d"
+        AllowsTransparency="True" 
+        ShowInTaskbar="true" 
+        Topmost="false" 
+        WindowStyle="None" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        Icon="Images/Logo_i_v2.ico"
+        MouseLeftButtonDown="Window_MouseDown"
+        Title="Calibration" Height="700" Width="800">
+    <Border Background="White" BorderBrush="#FF1362A4" BorderThickness="3,3,3,3" CornerRadius="70,15,30,15" Margin="0,0,0,0">
+        <Grid>
+            <!-- Menú principal -->
+
+            <Label Content="ISMC ECU CONFIGURATION" HorizontalAlignment="Left" Height="40 " Margin="20,25,0,0" VerticalAlignment="Top" Width="400" FontWeight="Bold" FontSize="24" Foreground="#FF1362A4" FontFamily="Verdana"/>
+
+            <Image x:Name="iReturn"       HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="700,10,0,0" Cursor="Hand" Source="Images/IconoReturn.PNG"       ToolTip="Exit"                 MouseDown="iReturn_OnMouseDown"/>
+            <Image x:Name="iWriteInfo"    HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="625,10,0,0" Cursor="Hand" Source="Images/WriteFlash.PNG"        ToolTip="Write Motor to FLASH" MouseDown="iWriteInfo_OnMouseDown"          />
+            <Image x:Name="ImgSave"       HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="550,10,0,0" Cursor="Hand" Source="Images/Saved.jpg"              ToolTip="Save  Motor to File"  MouseDown="imgSave_OnMouseDown"           />
+            <Image x:Name="ImgMotorSel"   HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="475,10,0,0" Cursor="Hand" Source="Images/HeartBeatOffd.png"             ToolTip="Select Current ECU"   MouseDown="ISMCSel_OnMouseDown"           />
+
+            <TabControl x:Name="TabPar" HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="750" Margin="25,85,0,0" SelectionChanged="TabParam_OnSelChanged">
+
+                <TabItem Header="Motor" Height="40" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4">
+                    <Grid Background="white">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="365*"/>
+                            <ColumnDefinition Width="379*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image x:Name="iMotorEnabledA"    HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="20,10,0,0" Cursor="Hand" Source="Images/MotorAEnabled.png"        ToolTip="Enable / Disable Motor"          Grid.Column="1"  />
+                        <Image x:Name="iMotorEnabledB"    HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="195,10,0,0" Cursor="Hand" Source="Images/MotorBEnabled.png"        ToolTip="Enable / Disable Motor"         Grid.Column="1"  />
+
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,80,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,115,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,150,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,185,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,220,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,255,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,290,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,325,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,360,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,395,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,430,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,465,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+
+                        <Label Content="MOTOR IDENTIFIER"           HorizontalAlignment="Left" Height="30" Margin="60,75,0,0"  VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Label Content="POLE PAIRS"                 HorizontalAlignment="Left" Height="30" Margin="60,110,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" IsEnabled="false"/>
+                        <Label Content="STATOR RESISTANCE [OHM]"    HorizontalAlignment="Left" Height="30" Margin="60,145,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" IsEnabled="false"/>
+                        <Label Content="STATOR INDUCTANCE [H]"      HorizontalAlignment="Left" Height="30" Margin="60,180,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" IsEnabled="false"/>
+                        <Label Content="RATED FLUX [V/Hz]"          HorizontalAlignment="Left" Height="30" Margin="60,215,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" IsEnabled="false"/>
+                        <Label Content="NOMINAL CURRENT [A]"        HorizontalAlignment="Left" Height="30" Margin="60,250,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Label Content="MAX. CURRENT [A]"           HorizontalAlignment="Left" Height="30" Margin="60,285,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Label Content="INERTIA [Kgs/]"             HorizontalAlignment="Left" Height="30" Margin="60,320,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Label Content="FRICTION [Kgs/]"            HorizontalAlignment="Left" Height="30" Margin="60,355,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Label Content="CONNECTION"                 HorizontalAlignment="Left" Height="30" Margin="60,390,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" IsEnabled="false"/>
+                        <Label Content="TYPE OF SENSOR"             HorizontalAlignment="Left" Height="30" Margin="60,425,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Label Content="NUMBER OF LINES"            HorizontalAlignment="Left" Height="30" Margin="60,460,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+
+                        <TextBox x:Name="tNameA"                    HorizontalAlignment="Left" Height="25" Margin="350,75,0,0"  TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2" IsEnabled="false"/>
+                        <TextBox x:Name="tPolePairsA"               HorizontalAlignment="Left" Height="25" Margin="350,110,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2" IsEnabled="false"/>
+                        <TextBox x:Name="tRsA"                      HorizontalAlignment="Left" Height="25" Margin="350,145,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2" IsEnabled="false"/>
+                        <TextBox x:Name="tLsA"                      HorizontalAlignment="Left" Height="25" Margin="350,180,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2" IsEnabled="false"/>
+                        <TextBox x:Name="tRatedFluxA"               HorizontalAlignment="Left" Height="25" Margin="350,215,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2" IsEnabled="false"/>
+                        <TextBox x:Name="tMotorRatedCurrentA"       HorizontalAlignment="Left" Height="25" Margin="350,250,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2" IsEnabled="false"/>
+                        <TextBox x:Name="tMotorMaxCurrentA"         HorizontalAlignment="Left" Height="25" Margin="350,285,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2" IsEnabled="false"/>
+                        <TextBox x:Name="tInertiaA"                 HorizontalAlignment="Left" Height="25" Margin="350,320,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2" IsEnabled="false"/>
+                        <TextBox x:Name="tFrictionA"                HorizontalAlignment="Left" Height="25" Margin="350,355,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2" IsEnabled="false"/>
+                        <ComboBox x:Name="cbMotorSensorA"           HorizontalAlignment="Left" Height="25" Margin="350,425,0,0" Width="122" VerticalAlignment="Top" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" SelectedIndex="2" Grid.ColumnSpan="2" IsEnabled="false">
+                            <ComboBoxItem Content="Sensorless"/>
+                            <ComboBoxItem Content="Halls"/>
+                            <ComboBoxItem Content="Encoder Inc."/>
+                            <ComboBoxItem Content="Encoder SSI"/>
+                        </ComboBox>
+                        <TextBox x:Name="tNumberLinesA"              HorizontalAlignment="Left" Height="25" Margin="350,460,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                        <Image   x:Name="MotorTypeA"                HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="32" Margin="30,390,0,0" Source="Images/Star.png" Grid.Column="1"/>
+
+                        <Label Content="MOTOR PARAMETERS:"          HorizontalAlignment="Left" Height="30" Margin="10,19,0,0" VerticalAlignment="Top" Width="250" FontSize="18" FontWeight="Bold" Foreground="#FF1362A4" />
+
+                        <TextBox x:Name="tNameB"                    HorizontalAlignment="Left" Height="25" Margin="165,75,0,0"  TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1" IsEnabled="false"/>
+                        <TextBox x:Name="tPolePairsB"               HorizontalAlignment="Left" Height="25" Margin="165,110,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1" IsEnabled="false"/>
+                        <TextBox x:Name="tRsB"                      HorizontalAlignment="Left" Height="25" Margin="165,145,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1" IsEnabled="false"/>
+                        <TextBox x:Name="tLsB"                      HorizontalAlignment="Left" Height="25" Margin="165,180,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1" IsEnabled="false"/>
+                        <TextBox x:Name="tRatedFluxB"               HorizontalAlignment="Left" Height="25" Margin="165,215,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1" IsEnabled="false"/>
+                        <TextBox x:Name="tMotorRatedCurrentB"       HorizontalAlignment="Left" Height="25" Margin="165,250,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1" IsEnabled="false"/>
+                        <TextBox x:Name="tMotorMaxCurrentB"         HorizontalAlignment="Left" Height="25" Margin="165,285,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1" IsEnabled="false"/>
+                        <TextBox x:Name="tInertiaB"                 HorizontalAlignment="Left" Height="25" Margin="165,320,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1" IsEnabled="false"/>
+                        <TextBox x:Name="tFrictionB"                HorizontalAlignment="Left" Height="25" Margin="165,355,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1" IsEnabled="false"/>
+                        <Image   x:Name="MotorTypeB"                HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="32" Margin="210,390,0,0" Source="Images/Star.png" Grid.Column="1"/>
+                        <ComboBox x:Name="cbMotorSensorB"           HorizontalAlignment="Left" Height="25" Margin="165,425,0,0" Width="122" VerticalAlignment="Top" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1" SelectedIndex="2"  IsEnabled="false">
+                            <ComboBoxItem Content="Sensorless"/>
+                            <ComboBoxItem Content="Halls"/>
+                            <ComboBoxItem Content="Encoder Inc."/>
+                            <ComboBoxItem Content="Encoder SSI"/>
+                        </ComboBox>
+                        <TextBox x:Name="tNumberLinesB"             HorizontalAlignment="Left" Height="25" Margin="165,460,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Control" Height="40" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4">
+                    <Grid Background="white">
+
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,105,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20" Grid.Column="1"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,255,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20" Grid.Column="1"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,405,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20" Grid.Column="1"/>
+
+                        <Label Content="Current Controller"                HorizontalAlignment="Left" Height="30" Margin="40,100,0,0" VerticalAlignment="Top"  Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.Column="1" />
+                        <Label Content="Proportional Gain (Kp)"            HorizontalAlignment="Left" Height="30" Margin="70, 150,0,0" VerticalAlignment="Top"  Width="200" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <TextBox x:Name="tCurrentKpA"                      HorizontalAlignment="Left" Height="30" Margin="340,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" IsEnabled="false"/>
+                        <TextBox x:Name="tCurrentKpB"                      HorizontalAlignment="Left" Height="30" Margin="530,150,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" IsEnabled="false"/>
+                        <Label Content="Proportional Gain (Ki)"            HorizontalAlignment="Left" Height="30" Margin="70, 200,0,0" VerticalAlignment="Top"  Width="200" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <TextBox x:Name="tCurrentKiA"                      HorizontalAlignment="Left" Height="30" Margin="340,200,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" IsEnabled="false"/>
+                        <TextBox x:Name="tCurrentKiB"                      HorizontalAlignment="Left" Height="30" Margin="530,200,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" IsEnabled="false"/>
+
+                        <Label Content="Speed Controller"                  HorizontalAlignment="Left" Height="30" Margin="40, 250,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.Column="1" />
+                        <Label Content="Proportional Gain (Kp)"            HorizontalAlignment="Left" Height="30" Margin="70, 300,0,0" VerticalAlignment="Top"  Width="200" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <TextBox x:Name="tSpeedKpA"                        HorizontalAlignment="Left" Height="30" Margin="340,300,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" IsEnabled="false"/>
+                        <TextBox x:Name="tSpeedKpB"                        HorizontalAlignment="Left" Height="30" Margin="530,300,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" IsEnabled="false"/>
+                        <Label Content="Proportional Gain (Ki)"            HorizontalAlignment="Left" Height="30" Margin="70, 350,0,0" VerticalAlignment="Top"  Width="200" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <TextBox x:Name="tSpeedKiA"                        HorizontalAlignment="Left" Height="30" Margin="340,350,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" IsEnabled="false"/>
+                        <TextBox x:Name="tSpeedKiB"                        HorizontalAlignment="Left" Height="30" Margin="530,350,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" IsEnabled="false"/>
+                        <Label Content="Disturbance rejection Controller"  HorizontalAlignment="Left" Height="30" Margin="40, 400,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.Column="1" />
+                        <Label Content="Bandwidth (rad/s)"                 HorizontalAlignment="Left" Height="30" Margin="70, 450,0,0" VerticalAlignment="Top"  Width="200" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <TextBox x:Name="tBandwidthA"                      HorizontalAlignment="Left" Height="30" Margin="340,450,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold"/>
+                        <TextBox x:Name="tBandwidthB"                      HorizontalAlignment="Left" Height="30" Margin="530,450,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold"/>
+
+
+
+                        <Label Content="CONTROL PARAMETERS:"         HorizontalAlignment="Left" Height="30" Margin="10,19,0,0" VerticalAlignment="Top" Width="250" FontSize="18" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+
+                        <Image x:Name="iMotorEnabledA2"    HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="365,10,0,0" Cursor="Hand" Source="Images/MotorAEnabled.png"/>
+                        <Image x:Name="iMotorEnabledB2"    HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="560,10,0,0" Cursor="Hand" Source="Images/MotorBEnabled.png"/>
+
+
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Protections" Height="40" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4">
+                    <Grid Background="white">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="251*"/>
+                            <ColumnDefinition Width="493*"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,85,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,125,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,165,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,205,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,245,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,285,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,325,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,365,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+
+                        <Label Content="MAX. CURRENT [A]"            HorizontalAlignment="Left" Height="30" Margin="44,80,0,0" VerticalAlignment="Top"  Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="AVG. CURRENT (i2t) [A]"            HorizontalAlignment="Left" Height="30" Margin="44,120,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="TIME TO AVG. CURRENT [s]"   HorizontalAlignment="Left" Height="30" Margin="44,160,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="MAX. SPEED [KRPM]"           HorizontalAlignment="Left" Height="30" Margin="44,200,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="TIME TO AVG. SPEED [ms]"     HorizontalAlignment="Left" Height="30" Margin="44,240,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="MAX. TEMP (ºC)"              HorizontalAlignment="Left" Height="30" Margin="44,280,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="MAX CURRENT ENC. OFFSET [A]" HorizontalAlignment="Left" Height="30" Margin="44,320,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="MAX. ACCEL [KRPM/S]"         HorizontalAlignment="Left" Height="30" Margin="44,360,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+
+                        <Label Content="CONTROL PARAMETERS:"         HorizontalAlignment="Left" Height="30" Margin="10,19,0,0"   VerticalAlignment="Top" Width="250" FontSize="18" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+
+                        <TextBox x:Name="tMaxCurrentA"               HorizontalAlignment="Left" Height="35" Margin="83,80,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tAvgCurrentA"               HorizontalAlignment="Left" Height="35" Margin="83,120,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tTimeAvgCurrentA"           HorizontalAlignment="Left" Height="35" Margin="83,160,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tMaxSpeedA"                 HorizontalAlignment="Left" Height="35" Margin="83,200,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tTimeAvgSpeedA"             HorizontalAlignment="Left" Height="35" Margin="83,240,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tMaxTempA"                  HorizontalAlignment="Left" Height="35" Margin="83,280,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tEncOffsetCurrA"            HorizontalAlignment="Left" Height="35" Margin="83,320,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tMaxAccelA"                 HorizontalAlignment="Left" Height="35" Margin="83,360,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+
+                        <TextBox x:Name="tMaxCurrentB"               HorizontalAlignment="Left" Height="35" Margin="279,80,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tAvgCurrentB"               HorizontalAlignment="Left" Height="35" Margin="279,120,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tTimeAvgCurrentB"           HorizontalAlignment="Left" Height="35" Margin="279,160,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tMaxSpeedB"                 HorizontalAlignment="Left" Height="35" Margin="279,200,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tTimeAvgSpeedB"             HorizontalAlignment="Left" Height="35" Margin="279,240,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tMaxTempB"                  HorizontalAlignment="Left" Height="35" Margin="279,280,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tEncOffsetCurrB"            HorizontalAlignment="Left" Height="35" Margin="279,320,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tMaxAccelB"                 HorizontalAlignment="Left" Height="35" Margin="279,360,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <Image x:Name="iMotorEnabledA3"              HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="114,10,0,0" Cursor="Hand" Source="Images/MotorAEnabled.png" Grid.Column="1"/>
+                        <Image x:Name="iMotorEnabledB3"              HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="309,10,0,0" Cursor="Hand" Source="Images/MotorBEnabled.png" Grid.Column="1"/>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Communications" Height="40" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" IsEnabled="false">
+                    <Grid Background="white">
+                        <Label Content="COMMUNICATIONS PARAMETERS:"           HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="350" FontSize="18" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,80,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="20,130,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+
+                        <Label Content="CAN DRIVER"             HorizontalAlignment="Left" Height="30" Margin="60,75,0,0"  VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Label Content="BAUDRATE"               HorizontalAlignment="Left" Height="30" Margin="60,125,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+
+                        <Label Content="ISMC A"             HorizontalAlignment="Left" Height="30" Margin="380,170,0,0"  VerticalAlignment="Top" Width="80" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Rectangle x:Name="rSeparation3" HorizontalAlignment="Left" VerticalAlignment="Top" Height="5"  Width="180" Margin="330,200,0,0" Stroke="#FF1362A4" RadiusX="3" RadiusY="3" RenderTransformOrigin="0.5,0.5" Fill="#FF1362A4"/>
+                        <Rectangle x:Name="rSeparation4" HorizontalAlignment="Left" VerticalAlignment="Top" Height="5"  Width="180" Margin="530,200,0,0" Stroke="#FF1362A4" RadiusX="3" RadiusY="3" RenderTransformOrigin="0.5,0.5" Fill="#FF1362A4"/>
+
+                        <ComboBox x:Name="cbDriver"               HorizontalAlignment="Left" Height="35" Margin="350,75,0,0" Width="122" VerticalAlignment="Top" Foreground="#FF1362A4" FontSize="18" FontWeight="Bold" >
+                            <ComboBoxItem Content="CANCaseXL"/>
+                            <ComboBoxItem Content="PCAN"/>
+                        </ComboBox>
+
+                        <ComboBox x:Name="cbBaudRate"               HorizontalAlignment="Left" Height="35" Margin="350,125,0,0" Width="122" VerticalAlignment="Top" Foreground="#FF1362A4" FontSize="18" FontWeight="Bold" >
+                            <ComboBoxItem Content="1000Kbs"/>
+                            <ComboBoxItem Content="500Kbs"/>
+                            <ComboBoxItem Content="250Kbs"/>
+                            <ComboBoxItem Content="100Kbs"/>
+                        </ComboBox>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,325,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,365,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,255,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+
+                        <Label Content="Node Id"                     HorizontalAlignment="Left" Height="30" Margin="44,250,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Label Content="Producer Heartbeat (ms)"     HorizontalAlignment="Left" Height="30" Margin="44,320,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Label Content="Consumer Heartbeat (ms)"     HorizontalAlignment="Left" Height="30" Margin="44,360,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+
+                        <TextBox x:Name="tTimeHeartBeat"             HorizontalAlignment="Left" Height="35" Margin="334,320,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold"/>
+                        <TextBox x:Name="tTimeComms"                 HorizontalAlignment="Left" Height="35" Margin="334,360,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold"/>
+                        <TextBox x:Name="tTimeHeartBeatB"            HorizontalAlignment="Left" Height="35" Margin="530,320,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold"/>
+                        <TextBox x:Name="tTimeCommsB"                HorizontalAlignment="Left" Height="35" Margin="530,360,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold"/>
+                        <ComboBox x:Name="cbNodeIdA"                 HorizontalAlignment="Left" Height="35" Margin="334,250,0,0" Width="122" VerticalAlignment="Top" Foreground="#FF1362A4" FontSize="18" FontWeight="Bold" >
+                            <ComboBoxItem Content="0x00"/>
+                            <ComboBoxItem Content="0x01"/>
+                        </ComboBox>
+                        <ComboBox x:Name="cbNodeIdB"                 HorizontalAlignment="Left" Height="35" Margin="530,250,0,0" Width="122" VerticalAlignment="Top" Foreground="#FF1362A4" FontSize="18" FontWeight="Bold" >
+                            <ComboBoxItem Content="0x00"/>
+                            <ComboBoxItem Content="0x01"/>
+                        </ComboBox>
+
+
+
+
+
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="File" Height="40" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4">
+                    <Grid Background="white">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="251*"/>
+                            <ColumnDefinition Width="493*"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,85,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,125,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,165,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,205,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,245,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,285,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,325,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,365,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+                        <Ellipse Fill="#FF1362A4" HorizontalAlignment="Left" Height="20" Margin="10,405,0,0" Stroke="#FF1362A4" VerticalAlignment="Top" Width="20"/>
+
+                        <Label Content="MAX. CURRENT [A]"            HorizontalAlignment="Left" Height="30" Margin="44,80,0,0" VerticalAlignment="Top"  Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="AVG. CURRENT (i2t) [A]"            HorizontalAlignment="Left" Height="30" Margin="44,120,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="TIME TO AVG. CURRENT [s]"    HorizontalAlignment="Left" Height="30" Margin="44,160,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="MAX. SPEED [KRPM]"           HorizontalAlignment="Left" Height="30" Margin="44,200,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="TIME TO AVG. SPEED [ms]"     HorizontalAlignment="Left" Height="30" Margin="44,240,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="MAX. TEMP (ºC)"              HorizontalAlignment="Left" Height="30" Margin="44,280,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="MAX CURRENT ENC. OFFSET [A]" HorizontalAlignment="Left" Height="30" Margin="44,320,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="MAX. ACCEL [KRPM/S]"         HorizontalAlignment="Left" Height="30" Margin="44,360,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+                        <Label Content="NUMBER OF LINES"             HorizontalAlignment="Left" Height="30" Margin="44,400,0,0" VerticalAlignment="Top" Width="250" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4" />
+                        <Label Content="PARAMETERS TO SAVE:"         HorizontalAlignment="Left" Height="30" Margin="10,19,0,0"  VerticalAlignment="Top" Width="250" FontSize="18" FontWeight="Bold" Foreground="#FF1362A4" Grid.ColumnSpan="2" />
+
+                        <TextBox x:Name="tMaxCurrent"               HorizontalAlignment="Left" Height="35" Margin="83,80,0,0"  TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tAvgCurrent"               HorizontalAlignment="Left" Height="35" Margin="83,120,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tTimeAvgCurrent"           HorizontalAlignment="Left" Height="35" Margin="83,160,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tMaxSpeed"                 HorizontalAlignment="Left" Height="35" Margin="83,200,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tTimeAvgSpeed"             HorizontalAlignment="Left" Height="35" Margin="83,240,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tMaxTemp"                  HorizontalAlignment="Left" Height="35" Margin="83,280,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tEncOffsetCurr"            HorizontalAlignment="Left" Height="35" Margin="83,320,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tMaxAccel"                 HorizontalAlignment="Left" Height="35" Margin="83,360,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+                        <TextBox x:Name="tNumberLines"              HorizontalAlignment="Left" Height="35" Margin="83,400,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="122" Foreground="#FF1362A4" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Memory" Height="40" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4">
+                    <Grid Background="white">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="413*"/>
+                            <ColumnDefinition Width="331*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <DataGrid x:Name="dgFlashData" HorizontalAlignment="Left" Height="300" Margin="10,10,0,0" VerticalAlignment="Top" Width="725" Foreground="#FF1362A4" FontSize="10" FontWeight="Bold"  SelectionUnit="FullRow" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False" Grid.ColumnSpan="2" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Address"     Binding="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MinWidth="50" Width="Auto"  />
+                                <DataGridTextColumn Header="Name"        Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MinWidth="50" Width="Auto" />
+                                <DataGridTextColumn Header="Value"       Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="false" MinWidth="50" Width="Auto" />
+                                <DataGridTextColumn Header="Description" Binding="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" MinWidth="200" Width="*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <ListBox x:Name="lbMotors"      HorizontalAlignment="Left" Height="150" Margin="10,325,0,0" VerticalAlignment="Top" Width="327" SelectionChanged="lbMotors_OnSelectionChanged" FontSize="12" FontWeight="Bold" Foreground="#FF1362A4"/>
+                        <Image x:Name="iReset"          HorizontalAlignment="Left" VerticalAlignment="Top" Height="85" Width="85" Margin="363,325,0,0" Cursor="Hand" Source="Images/Reset2.png"       ToolTip="Reset ECU" MouseDown="iReset_MouseDown" Grid.ColumnSpan="2"          />
+
+                    </Grid>
+                </TabItem>
+
+            </TabControl>
+
+
+            <Image x:Name="iLogo" Source="Images/Logotipo masermic.jpg" HorizontalAlignment="Left" Height="41" Margin="585,650,0,0" VerticalAlignment="Top" Width="180"/>
+            <Rectangle x:Name="rSeparation1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="5"  Width="750" Margin="15,640,0,0" Stroke="#FF1362A4" RadiusX="3" RadiusY="3" RenderTransformOrigin="0.5,0.5" Fill="#FF1362A4"/>
+            <Rectangle x:Name="rSeparation2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="5"  Width="750" Margin="15,75,0,0" Stroke="#FF1362A4" RadiusX="3" RadiusY="3" RenderTransformOrigin="0.5,0.5" Fill="#FF1362A4"/>
+
+
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,16 @@
+﻿<Window x:Class="iSMC.UpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iSMC"
+        mc:Ignorable="d"
+        AllowsTransparency="True" ShowInTaskbar="true" Topmost="false" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Title="UpdateWindow" Background="Transparent" Height="180" Width="470"  >
+    <Border Background="White" BorderBrush="#FF1362A4" BorderThickness="3,3,3,3" CornerRadius="15,15,15,15" Margin="0,0,0,0">
+        <Grid>
+            <Image x:Name="iProgress" HorizontalAlignment="Left" Height="150" Width="450" Margin="5,9,0,0" VerticalAlignment="Top" Source="Images/RecordingProgress.png"/>
+            <Label x:Name="tProgress" Content="Recording Data..." HorizontalAlignment="Left" Height="31" Margin="184,22,0,0" VerticalAlignment="Top" Width="124" Foreground="#FF1362A4" FontWeight="Bold" FontSize="14"/>
+        </Grid>
+    </Border>
+</Window>

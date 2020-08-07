@@ -1,0 +1,22 @@
+﻿<Window x:Class="iSMC.ErrorMessage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iSMC"
+        AllowsTransparency="True" ShowInTaskbar="true" Topmost="false" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Title="ErrorMessage" Background="Transparent" Height="200" Width="500" MouseLeftButtonDown="Window_MouseDown"   >
+    <Border Background="White" BorderBrush="#FF1362A4" BorderThickness="3,3,3,3" CornerRadius="15,15,15,15" Margin="0,0,0,0">
+        <Grid>
+            <Rectangle x:Name="rSeparation1" HorizontalAlignment="Left" Height="5" Stroke="#FF1362A4"  Width="480" RadiusX="3" RadiusY="3" RenderTransformOrigin="0.5,0.5" Fill="#FF1362A4" Margin="6,23,0,391"/>
+            <Label Content="iSMC INFO MESSAGE" HorizontalAlignment="Left" Height="31" Margin="5,0,0,0" VerticalAlignment="Top" Width="397" Foreground="#FF1362A4" FontWeight="Bold" FontSize="14"/>
+
+
+            <Image x:Name="iWarning" HorizontalAlignment="Left" Height="64" Width="64" Margin="27,58,0,0" VerticalAlignment="Top" Source="Images/IconoWarning.png" RenderTransformOrigin="-4.777,0.267" />
+            <Button x:Name="pbExit" Content="EXIT"  Cursor="Hand" HorizontalAlignment="Left" Height="34" Margin="349,151,0,0" VerticalAlignment="Top" Width="125" Background="White" Click="pbExit_OnClick" FontSize="20" FontWeight="Bold" Foreground="#FF1362A4" BorderBrush="#FF1362A4" BorderThickness="2"/>
+            <Rectangle x:Name="rSeparation1_Copy" HorizontalAlignment="Left" Height="5" Stroke="#FF1362A4"  Width="480" RadiusX="3" RadiusY="3" RenderTransformOrigin="0.5,0.5" Fill="#FF1362A4" Margin="6,23,0,166"/>
+            <Label x:Name="lAppMsg" HorizontalContentAlignment="Center" Height="76" Margin="115,53,25,0" VerticalAlignment="Top" Width="354" FontSize="14" FontWeight="Bold" Foreground="#FF1362A4"/>
+
+        </Grid>
+    </Border>
+</Window>

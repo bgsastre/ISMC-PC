@@ -1,0 +1,177 @@
+﻿<Window x:Class="iSMC.Control"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iSMC"
+        mc:Ignorable="d"
+        Icon="Images/Logo_i_v2.ico"
+        WindowStyle="None"
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen"       
+        Background="Transparent" 
+        AllowsTransparency="True" 
+        ShowInTaskbar="true" 
+        Topmost="false"     
+        Title="Control" Height="900" Width="1200" MouseDown="Control_MouseDown" >
+
+    <Border Background="White" BorderBrush="#FF1362A4" BorderThickness="3,3,3,3" CornerRadius="70,15,70,15" Margin="0,0,0,0">
+        <Grid x:Name="AppGrid" ShowGridLines="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="35*"></RowDefinition>
+                <RowDefinition Height="50*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Ellipse   x:Name="iMotorEnableA" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="40" Width="40"  Margin="20,3,0,0"    VerticalAlignment="Top" Fill="#FF1362A4"  />
+            <Label     x:Name="lA"            Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="40" Width="40"  Margin="27,1,0,0"    VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="White" FontFamily="Impact" Content="A" />
+            <Ellipse   x:Name="iMotorEnableB" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="40" Width="40"  Margin="20,3,0,0"    VerticalAlignment="Top" Fill="#FF1362A4"  />
+            <Label     x:Name="lB"            Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="40" Width="40"  Margin="27,1,0,0"    VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Foreground="White" FontFamily="Impact" Content="B" />
+
+            <Label Content="iSMC CONTROL PANEL" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Height="50" Margin="30,25,0,0" VerticalAlignment="Top" Width="500" FontWeight="Bold" FontSize="36" Foreground="#FF1362A4" FontFamily="Verdana"/>
+            <Image x:Name="iReturn"             Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Height="64" Width="64"  Margin="0,10,20, 0"  VerticalAlignment="Top" Cursor="Hand" Source="Images/IconoReturn.PNG"    ToolTip="Return"                MouseDown="iReturn_OnMouseDown"  />
+            <Image x:Name="iHTB"                Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Height="64" Width="64"  Margin="0,10,100, 0"  VerticalAlignment="Top" Cursor="Hand" Source="Images/HeartBeatOn.PNG"    ToolTip="ProductHB"          MouseDown="TestHeartBeat_OnClick"  />
+            
+            <Rectangle x:Name="rBoardSetupA"  Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left" Height="775" Width="580" Margin="5, 0,  0, 0" Stroke="#FF1362A4" VerticalAlignment="Top" RadiusX="20" RadiusY="20"/>
+            <Rectangle x:Name="rBoardSetupB"  Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Left" Height="775" Width="580" Margin="5, 0,  0, 0" Stroke="#FF1362A4" VerticalAlignment="Top" RadiusX="20" RadiusY="20"/>
+            <TextBox   x:Name="lCtrlSetupA"   Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="30" Width="220" Margin="80,13,0,0"   VerticalAlignment="Top" TextWrapping="Wrap" Text="MOTOR CONTROL SETUP" FontSize="14" FontFamily="Verdana" Foreground="#FF1362A4" FontWeight="Bold" BorderBrush="{x:Null}"  />
+            <TextBox   x:Name="lCtrlSetupB"   Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="30" Width="220" Margin="80,13,0,0"   VerticalAlignment="Top" TextWrapping="Wrap" Text="MOTOR CONTROL SETUP" FontSize="14" FontFamily="Verdana" Foreground="#FF1362A4" FontWeight="Bold" BorderBrush="{x:Null}"  />
+            <Image     x:Name="DriverCmdA"    Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="60" Width="60"  Margin="75,43,0,0"   VerticalAlignment="Top" Cursor="Hand"  Source="Images/BatteryOFF.PNG"        MouseDown="DriverCmdA_OnMouseDown" />
+            <Image     x:Name="iControlCmdA"  Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="60" Width="60"  Margin="175,43,0,0"  VerticalAlignment="Top" Cursor="Hand" Source="Images/IconoPlay.PNG"          MouseDown="RunA_OnMouseDown"   />
+            <Image     x:Name="iSpeedCCWA"    Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="60" Width="60"  Margin="275,43,0,0"  VerticalAlignment="Top" Cursor="Hand" Source="Images/MotorCCW.PNG"           MouseDown="iSpeedCCWA_OnMouseDown"    />
+            <Image     x:Name="iRegenBrkA"    Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="60" Width="60"  Margin="375,43,0,0"  VerticalAlignment="Top" Cursor="Hand" Source="Images/RegenBrakingOff.PNG"    MouseDown="iRegenBrkA_OnMouseDown" />
+            <Image     x:Name="iBrakeA"       Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="60" Width="60"  Margin="475,43,0,0"  VerticalAlignment="Top" Cursor="Hand" Source="Images/BrakeOn.png"           MouseDown="iBrakeA_OnMouseDown" />
+            <Label     x:Name="lBusCmdA"      Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="25" Width="50"  Margin="70,103,0,0"  VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D"  Content="BUS OFF"   />
+            <Label     x:Name="lControlCmdA"  Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="25" Width="55"  Margin="170,103,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D"  Content="CTRL OFF"  />
+            <Label     x:Name="lSpinCmdA"     Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="25" Width="60"  Margin="270,103,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D"  Content="CCW SPIN"   />
+            <Label     x:Name="lRegenBrkA"    Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="25" Width="65"  Margin="370,103,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D"  Content="REGEN OFF"  />
+            <Label     x:Name="lBrakeA"       Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Height="25" Width="65"  Margin="470,103,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D"  Content="BRAKE ON"/>
+            <TextBlock x:Name="TMsg2" HorizontalAlignment="Left" Height="36" Margin="694,370,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="139"/>
+            <TextBlock x:Name="TMsg3" HorizontalAlignment="Left" Height="36" Margin="694,410,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="139"/>
+            <TextBlock x:Name="TMsg4" HorizontalAlignment="Left" Height="36" Margin="694,450,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="139"/>
+            <Image     x:Name="iLedTorqueA"   Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40"  Margin="38, 170,0,0" Cursor="Hand" Source="Images/LedGris.png" MouseDown="iTorqueA_OnMouseDown" IsEnabled="false"/>
+            <Label     x:Name="lTorqueRefA"   Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="164" Margin="225,155,0,0" FontWeight="Bold" FontSize="14" Foreground="#FF1362A4" Content="Torque Reference (Nm)" IsEnabled="false"/>
+            <Slider    x:Name="slTorqueA"     Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="400" Margin="100,180,0,0" Maximum="1.2" TickFrequency="0.00390625" IsSnapToTickEnabled="True"  ValueChanged="slTorqueA_OnValueChanged" />
+            <Label     x:Name="lTorqueMaxA"   Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="64"  Margin="475,200,0,0" Foreground="#FF6C6C6C" Content="1.2"  />
+            <Label     x:Name="lTorqueMinA"   Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="64"  Margin="100,200,0,0" Foreground="#FF6C6C6C" Content="0"     />
+            <TextBlock x:Name="tTorqueValueA" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="54"  Margin="510,180,0,0" FontSize="16" FontWeight="Bold" Foreground="#FF1362A4" TextWrapping="Wrap" Text="0.0" />
+
+            <Image x:Name="iLedSpeedA"        Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40"  Margin="38,250,0,0"  Cursor="Hand" Source="Images/LedON.jpg" MouseDown="iSpeedA_OnMouseDown" IsEnabled="false" />
+            <Label x:Name="lSpeedRefA"        Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="164" Margin="225,235,0,0" FontWeight="Bold" FontSize="14" Foreground="#FF1362A4" Content="Speed Reference (rpm)"  />
+            <Slider x:Name="slSpeedA"         Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="400" Margin="100,256,0,0" Maximum="5000" TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="slSpeedA_OnValueChanged"/>
+            <Label x:Name="lSpeedMaxA"        Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="64"  Margin="475,275,0,0"  Foreground="#FF6C6C6C" Content="5000" />
+            <Label x:Name="lSpeedMinA"        Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="64"  Margin="100,275,0,0" Foreground="#FF6C6C6C" Content="0" />
+            <TextBlock x:Name="tSpeedValueA"  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="64"  Margin="510,256,0,0" FontSize="16" FontWeight="Bold" Foreground="#FF1362A4" TextWrapping="Wrap" Text="0.0" />
+            
+            <Label   x:Name="lBoardTempA"           Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" Margin="80,  90,0,0" Content="Board Temp (ºC)"   FontWeight="Bold" FontSize="16" Foreground="#FF1362A4" />
+            <Label   x:Name="lBusVoltageA"          Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" Margin="80, 130,0,0" Content="Bus Voltage (V)"   FontWeight="Bold" FontSize="16" Foreground="#FF1362A4" />
+            <Label   x:Name="lSpeedStatusA"         Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" Margin="80, 170,0,0" Content="Speed Value (RMP)" FontWeight="Bold" FontSize="16" Foreground="#FF1362A4" />
+            <Label   x:Name="lTorqueStatusA"        Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" Margin="80, 210,0,0" Content="Torque Value (Nm)" FontWeight="Bold" FontSize="16" Foreground="#FF1362A4" />
+            <Label   x:Name="lCurrentStatusA"       Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" Margin="80, 250,0,0" Content="Current Value (A)" FontWeight="Bold" FontSize="16" Foreground="#FF1362A4" />
+            
+            <Label   x:Name="lBoardTempValA"        Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="280, 90,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            <Label   x:Name="lBusVoltageValA"       Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="280,130,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            <Label   x:Name="lSpeedStatusValA"      Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="280,170,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            <Label   x:Name="lTorqueStatusValA"     Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="280,210,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            <Label   x:Name="lCurrentStatusValA"    Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="280,250,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            
+            <Ellipse x:Name="elA1"                  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="15"  Margin="50, 100,0,0" Stroke="#FF1362A4" Fill="#FF1362A4" />
+            <Ellipse x:Name="elA2"                  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="15"  Margin="50, 140,0,0" Stroke="#FF1362A4" Fill="#FF1362A4" />
+            <Ellipse x:Name="elA3"                  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="15"  Margin="50, 180,0,0" Stroke="#FF1362A4" Fill="#FF1362A4" />
+            <Ellipse x:Name="elA4"                  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="15"  Margin="50, 220,0,0" Stroke="#FF1362A4" Fill="#FF1362A4" />
+            <Ellipse x:Name="elA5"                  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="15"  Margin="50, 260,0,0" Stroke="#FF1362A4" Fill="#FF1362A4" />
+            
+            <Image   x:Name="iStatusDisabledA"      Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="50,310,0,0" Source="Images/LedGris.PNG"  />
+            <Image   x:Name="iStatusEnabledA"       Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="150,310,0,0" Source="Images/LedGris.PNG"  />
+            <Image   x:Name="iStatusSynchA"         Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="250,310,0,0" Source="Images/LedGris.PNG"  />
+            <Image   x:Name="iStatusRunA"           Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="350,310,0,0" Source="Images/LedGris.PNG"  />
+            <Image   x:Name="iStatusFaultA"         Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64"  Margin="450,310,0,0" Source="Images/LedGris.PNG"  />
+            <Label   x:Name="lDisabledA"            Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="60" Margin="52,375,0,0" FontSize="10" FontWeight="Bold" IsEnabled="False" Content="DISABLED" />
+            <Label   x:Name="lEnabledA"             Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="60" Margin="152,375,0,0" FontSize="10" FontWeight="Bold" IsEnabled="False" Content="ENABLED" />
+            <Label   x:Name="lSynchA"               Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="60" Margin="260,375,0,0" FontSize="10" FontWeight="Bold" IsEnabled="False" Content="SYNC." />
+            <Label   x:Name="lRunA"                 Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="43" Margin="362,375,0,0" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D" Content="RUN"  />
+            <Label   x:Name="lFaultA"               Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="43" Margin="460,375,0,0" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D" Content="FAULT" KeyDown="Control_OnKeyDown"  />
+
+
+            <Image   x:Name="iCommStatusA"      Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="90"  Margin="475,  5,0,0" Cursor="Hand" Source="Images/HeartBeatOff.PNG"  />
+            <TextBox x:Name="lCtrlStatusA"      Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="220" Margin="13,40,0,0" TextWrapping="Wrap" Text="MOTOR CONTROL STATUS" FontSize="14" FontFamily="Verdana" Foreground="#FF1362A4" FontWeight="Bold" BorderBrush="{x:Null}"/>
+            <Image   x:Name="iECUStatusA"       Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="90"  Margin="375,  5,0,0" Cursor="Hand" Source="Images/ECUIdle.PNG" />
+            <Image   x:Name="iRefresh"          Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="60"  Margin="290, 20,0,0" Cursor="Hand" Source="Images/Reset.PNG" MouseDown="RefreshA_OnMouseDown" />
+            <Label   x:Name="lFaultMsgA"        Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="500" Margin="40, 400,0,0" FontSize="18" FontWeight="Bold" IsEnabled="False" Content="Fault Message:" Visibility="Hidden" />
+            <Label   x:Name="lFaultMsgA2"       Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="500" Margin="40, 425,0,0" FontSize="18" FontWeight="Bold" IsEnabled="False" Content="" Visibility="Hidden" />
+
+
+
+            <Image     x:Name="DriverCmdB"    Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="60" Width="60"  Margin="75,43,0,0"   VerticalAlignment="Top" Cursor="Hand"  Source="Images/BatteryOFF.PNG"        MouseDown="DriverCmdB_OnMouseDown" />
+            <Image     x:Name="iControlCmdB"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="60" Width="60"  Margin="175,43,0,0"  VerticalAlignment="Top" Cursor="Hand" Source="Images/IconoPlay.PNG"          MouseDown="RunB_OnMouseDown"   />
+            <Image     x:Name="iSpeedCCWB"    Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="60" Width="60"  Margin="275,43,0,0"  VerticalAlignment="Top" Cursor="Hand" Source="Images/MotorCCW.PNG"           MouseDown="iSpeedCCWB_OnMouseDown"    />
+            <Image     x:Name="iRegenBrkB"    Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="60" Width="60"  Margin="375,43,0,0"  VerticalAlignment="Top" Cursor="Hand" Source="Images/RegenBrakingOff.png"    MouseDown="iRegenBrkB_OnMouseDown" />
+            <Image     x:Name="iBrakeB"       Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="60" Width="60"  Margin="475,43,0,0"  VerticalAlignment="Top" Cursor="Hand" Source="Images/BrakeOn.png"           MouseDown="iBrakeB_OnMouseDown" />
+            <Label     x:Name="lBusCmdB"      Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="25" Width="50"  Margin="70,103,0,0"  VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D"  Content="BUS OFF"   />
+            <Label     x:Name="lControlCmdB"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="25" Width="55"  Margin="170,103,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D"  Content="CTRL OFF"  />
+            <Label     x:Name="lSpinCmdB"     Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="25" Width="60"  Margin="270,103,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D"  Content="CCW SPIN"   />
+            <Label     x:Name="lRegenBrkB"    Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="25" Width="65"  Margin="370,103,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D"  Content="REGEN OFF"  />
+            <Label     x:Name="lBrakeB"       Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="25" Width="65"  Margin="470,103,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D"  Content="BRAKE ON"/>
+            <Image     x:Name="iLedTorqueB"   Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40"  Margin="38, 170,0,0" Cursor="Hand" Source="Images/LedGris.PNG" MouseDown="iTorqueB_OnMouseDown" IsEnabled="false"/>
+            <Label     x:Name="lTorqueRefB"   Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="164" Margin="225,155,0,0" FontWeight="Bold" FontSize="14" Foreground="#FF1362A4" Content="Torque Reference (Nm)"/>
+            <Slider    x:Name="slTorqueB"     Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="400" Margin="100,180,0,0" Maximum="1.2" TickFrequency="0.00390625" IsSnapToTickEnabled="True"  ValueChanged="slTorqueB_OnValueChanged" IsEnabled="false" />
+            <Label     x:Name="lTorqueMaxB"   Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="64"  Margin="475,200,0,0" Foreground="#FF6C6C6C" Content="1.2"  />
+            <Label     x:Name="lTorqueMinB"   Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="64"  Margin="100,200,0,0" Foreground="#FF6C6C6C" Content="0"     />
+            <TextBlock x:Name="tTorqueValueB" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="54"  Margin="510,180,0,0" FontSize="16" FontWeight="Bold" Foreground="#FF1362A4" TextWrapping="Wrap" Text="0.0" />
+            <Image x:Name="iLedSpeedB"        Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40"  Margin="38,250,0,0"  Cursor="Hand" Source="Images/LedON.jpg" MouseDown="iSpeedB_OnMouseDown" IsEnabled="false"/>
+            <Label x:Name="lSpeedRefB"        Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="164" Margin="225,235,0,0" FontWeight="Bold" FontSize="14" Foreground="#FF1362A4" Content="Speed Reference (rpm)"  />
+            <Slider x:Name="slSpeedB"         Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="19" Width="400" Margin="100,256,0,0" Maximum="5000" TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="slSpeedB_OnValueChanged"/>
+            <Label x:Name="lSpeedMaxB"        Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="64"  Margin="475,275,0,0"  Foreground="#FF6C6C6C" Content="5000" />
+            <Label x:Name="lSpeedMinB"        Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="64"  Margin="100,275,0,0" Foreground="#FF6C6C6C" Content="0" />
+            <TextBlock x:Name="tSpeedValueB"  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="64"  Margin="510,256,0,0" FontSize="16" FontWeight="Bold" Foreground="#FF1362A4" TextWrapping="Wrap" Text="0.0" />
+            
+            <Label   x:Name="lBoardTempB"           Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" Margin="80,  90,0,0" Content="Board Temp (ºC)"   FontWeight="Bold" FontSize="16" Foreground="#FF1362A4" />
+            <Label   x:Name="lBusVoltageB"          Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" Margin="80, 130,0,0" Content="Bus Voltage (V)"   FontWeight="Bold" FontSize="16" Foreground="#FF1362A4" />
+            <Label   x:Name="lSpeedStatusB"         Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" Margin="80, 170,0,0" Content="Speed Value (RMP)" FontWeight="Bold" FontSize="16" Foreground="#FF1362A4" />
+            <Label   x:Name="lTorqueStatusB"        Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" Margin="80, 210,0,0" Content="Torque Value (Nm)" FontWeight="Bold" FontSize="16" Foreground="#FF1362A4" />
+            <Label   x:Name="lCurrentStatusB"       Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200" Margin="80, 250,0,0" Content="Current Value (A)" FontWeight="Bold" FontSize="16" Foreground="#FF1362A4" />
+            
+            <Label   x:Name="lBoardTempValB"        Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="280, 90,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            <Label   x:Name="lBusVoltageValB"       Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="280,130,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            <Label   x:Name="lSpeedStatusValB"      Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="280,170,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            <Label   x:Name="lTorqueStatusValB"     Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="280,210,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            <Label   x:Name="lCurrentStatusValB"    Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="280,250,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            
+            <Ellipse x:Name="elB1"              Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="15"  Margin="50, 100,0,0" Stroke="#FF1362A4" Fill="#FF1362A4" />
+            <Ellipse x:Name="elB2"              Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="15"  Margin="50, 140,0,0" Stroke="#FF1362A4" Fill="#FF1362A4" />
+            <Ellipse x:Name="elB3"              Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="15"  Margin="50, 180,0,0" Stroke="#FF1362A4" Fill="#FF1362A4" />
+            <Ellipse x:Name="elB4"              Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="15"  Margin="50, 220,0,0" Stroke="#FF1362A4" Fill="#FF1362A4" />
+            <Ellipse x:Name="elB5"              Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Width="15"  Margin="50, 260,0,0" Stroke="#FF1362A4" Fill="#FF1362A4" />
+
+            <Image   x:Name="iStatusDisabledB"      Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="50,310,0,0" Source="Images/LedGris.PNG"  />
+            <Image   x:Name="iStatusEnabledB"       Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="150,310,0,0" Source="Images/LedGris.PNG"  />
+            <Image   x:Name="iStatusSynchB"         Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="250,310,0,0" Source="Images/LedGris.PNG"  />
+            <Image   x:Name="iStatusRunB"           Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64" Margin="350,310,0,0" Source="Images/LedGris.PNG"  />
+            <Image   x:Name="iStatusFaultB"         Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="64"  Margin="450,310,0,0" Source="Images/LedGris.PNG"  />
+            <Label   x:Name="lDisabledB"            Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="60" Margin="52,375,0,0" FontSize="10" FontWeight="Bold" IsEnabled="False" Content="DISABLED" />
+            <Label   x:Name="lEnabledB"             Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="60" Margin="152,375,0,0" FontSize="10" FontWeight="Bold" IsEnabled="False" Content="ENABLED" />
+            <Label   x:Name="lSynchB"               Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="60" Margin="260,375,0,0" FontSize="10" FontWeight="Bold" IsEnabled="False" Content="SYNC." />
+            <Label   x:Name="lRunB"                 Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="43" Margin="362,375,0,0" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D" Content="RUN"  />
+            <Label   x:Name="lFaultB"               Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="43" Margin="460,375,0,0" FontSize="10" FontWeight="Bold" Foreground="#FF6D6D6D" Content="FAULT" KeyDown="Control_OnKeyDown"  />
+            <Image   x:Name="iCommStatusB"          Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="90"  Margin="475, 5,0,0" Cursor="Hand" Source="Images/HeartBeatOff.png"  />
+            <TextBox x:Name="lCtrlStatusB"          Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="220" Margin="13, 40,0,0" TextWrapping="Wrap" Text="MOTOR CONTROL STATUS" FontSize="14" FontFamily="Verdana" Foreground="#FF1362A4" FontWeight="Bold" BorderBrush="{x:Null}"/>
+            <Image   x:Name="iECUStatusB"           Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="90"  Margin="375, 5,0,0" Cursor="Hand" Source="Images/ECUIdle.PNG" />
+            <Image   x:Name="iRefreshB"             Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="60"  Margin="290, 20,0,0" Cursor="Hand" Source="Images/Reset.png" MouseDown="RefreshB_OnMouseDown" />
+            <Label   x:Name="lFaultMsgB"            Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="500" Margin="40,400,0,0" FontSize="18" FontWeight="Bold" IsEnabled="False" Content="Fault Message:" Visibility="Hidden"/>
+            <Label   x:Name="lFaultMsgB2"           Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="500" Margin="40, 425,0,0" FontSize="18" FontWeight="Bold" IsEnabled="False" Content="Fault Message:" Visibility="Hidden" />
+            <Button x:Name="tTestHeartBeat" Content="Test off" Grid.Column="1" HorizontalAlignment="Left" Height="37" Margin="280,25,0,0" VerticalAlignment="Top" Width="101" Visibility="Hidden" Click="TestHeartBeat_OnClick"/>
+            <Label   x:Name="lPosEncA"              Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="380,210,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            <Label   x:Name="lPosEncB"              Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="80"  Margin="380,210,0,0" FontWeight="Bold" FontSize="20" Foreground="#FF1362A4" ContentStringFormat="{}{0:0.###}" Content="0.0" />
+            
+
+
+
+
+
+        </Grid>
+    </Border>
+</Window>
